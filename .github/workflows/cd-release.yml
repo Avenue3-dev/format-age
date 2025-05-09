@@ -1,0 +1,28 @@
+name: Continuous Deployment (Release)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 1: Run commitlint to ensure commit messages follow conventional commit format
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      # Step 2: Bump the version and create a tag using semantic-release
+      - name: Setup semantic-release
+        uses: semantic-release/semantic-release@v20
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
