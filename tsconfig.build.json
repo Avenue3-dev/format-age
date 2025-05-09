@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig",
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.js",
+    "**/*.spec.js",
+    "prettier.config.cjs",
+    ".eslintrc.cjs"
+  ]
+}
