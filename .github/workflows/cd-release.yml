@@ -1,4 +1,4 @@
-name: Continuous Deployment
+name: Continuous Deployment (Release)
 
 on:
   push:
@@ -30,16 +30,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Run standard-version
-        run: pnpm run release
-
       - name: Push release commit and tag
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git push --follow-tags
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run standard-version
+        run: pnpm run release
 
       - name: Build
         run: pnpm run build
