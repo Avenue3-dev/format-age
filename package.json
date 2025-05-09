@@ -14,6 +14,7 @@
   "description": "A utility for formatting age",
   "private": false,
   "scripts": {
+    "release": "standard-version",
     "build": "rimraf dist/ && tsc --project tsconfig.build.json",
     "test": "vitest run",
     "lint": "eslint src --ext ts,tsx,js --report-unused-disable-directives --fix",
@@ -26,6 +27,7 @@
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "rimraf": "^6.0.1",
+    "standard-version": "^9.5.0",
     "typescript": "^5.8.3",
     "vitest": "^3.1.3"
   }
