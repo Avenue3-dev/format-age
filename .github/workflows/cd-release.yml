@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Configure comitter
+      - name: Configure committer
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -40,40 +40,8 @@ jobs:
       - name: Run standard-version
         run: pnpm run release
 
-      - name: Push tags
-        run: git push origin --tags
+      - name: Push generated tag and release commit to main
+        run: |
+          git push origin main --tags
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build
-        run: pnpm run build
-
-      - name: Configure npm token
-        run: |
-          cat << EOF >> "./.npmrc"
-            //registry.npmjs.org/:_authToken=${NPM_TOKEN}
-            @avenue3-dev:registry=https://registry.npmjs.org
-            always-auth=true
-          EOF
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish NPM package
-        run: pnpm publish --access public --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Configure github token
-        run: |
-          cat << EOF >> "./.npmrc"
-            //npm.pkg.github.com/:_authToken=${NPM_TOKEN}
-            @avenue3-dev:registry=https://npm.pkg.github.com
-            always-auth=true
-          EOF
-        env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Publish github package
-        run: pnpm publish --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
