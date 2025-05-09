@@ -1,0 +1,7 @@
+tsconfig.json
+tsconfig.build.json
+src/
+!dist/
+.eslintrc.cjs
+prettier.config.cjs
+.github/
