@@ -5,3 +5,5 @@ src/
 .eslintrc.cjs
 prettier.config.cjs
 .github/
+commitlint.config.cjs
+.husky/
