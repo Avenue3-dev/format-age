@@ -1,6 +1,7 @@
 tsconfig.json
 tsconfig.build.json
-commitlint.config.js
 src/
 !dist/
-.husky/
+.eslintrc.cjs
+prettier.config.cjs
+.github/
