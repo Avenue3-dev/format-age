@@ -1,6 +1,6 @@
 {
   "name": "@avenue3-dev/format-age",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": "dist/index.js",
   "author": {
     "name": "Avenue3",
